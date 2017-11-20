@@ -82,6 +82,13 @@ namespace GC_MemCard_Reader
             }
         }
 
+        /*
+         * Both (uint32fromheader and uint16 from header) convert the
+         * bytes of the header to a HEX value and store those in a String         
+         * array - I've tried MANY different ways to avoid that, if you know
+         * one, please tell me :)
+        */
+        
         // returns the integer value within the given range (from offset to offset+length-1)
         private uint getuint32FromHeader(uint offset, uint length)
         {
