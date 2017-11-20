@@ -17,7 +17,7 @@ namespace GC_MemCard_Reader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            form = new mainForm();
+            form = new mainForm();            
             Application.Run(form);
         }
     }

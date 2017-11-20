@@ -28,8 +28,8 @@ namespace GC_MemCard_Reader
                 fs.Close();
 
                 // Values should be set
-                this.txtDateCreated.Text = memCard.DateCreated.ToString("dd/MM/yyyy");
-                this.txtCardSize.Text = @"MB " + memCard.CardSize.ToString();
+                this.txtDateCreated.Text = memCard.DateCreated.ToString("dd/MM/yyyy hh:mm");
+                this.txtCardSize.Text = memCard.CardSize.ToString() + @" MB";
                 this.txtEncoding.Text = (memCard.ASCII ? @"Western" : @"Japanese");
                 this.txtChecksum1.Text = memCard.c1.ToString();
                 this.txtChecksum2.Text = memCard.c2.ToString();
@@ -39,6 +39,11 @@ namespace GC_MemCard_Reader
         private void labelLink_Copyright_Clicked(object Sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/RlSEN");
+        }
+
+        private void txtDateCreated_Click(object sender, EventArgs e)
+        {
+            (sender as TextBox).SelectAll();
         }
     }
 }

@@ -7,4 +7,3 @@ D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Release\GC_Mem
 D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Release\GC_MemCard_Reader.csproj.CoreCompileInputs.cache
 D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Release\GC_MemCard_Reader.exe
 D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Release\GC_MemCard_Reader.pdb
-D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Release\GC_MemCard_Reader.csprojResolveAssemblyReference.cache

@@ -61,15 +61,19 @@ namespace GC_MemCard_Reader
                 this.card.Read(buffer, 0x0, (int) this.Block);
                 this.Header = buffer;
 
-                this.DateCreated = GC_TIME.AddSeconds(getuint32FromHeader(TIME_OFFSET, TIME_LENGTH));
+                this.DateCreated = (DateTime) GC_TIME.AddSeconds(getuint32FromHeader(TIME_OFFSET, TIME_LENGTH));
 
-                this.CardSize = (getuint16FromHeader(CARDSIZE_OFFSET, CARDSIZE_LENGTH)/8);
+                this.CardSize = (uint) (getuint16FromHeader(CARDSIZE_OFFSET, CARDSIZE_LENGTH)/8);
 
-                this.ASCII = (getuint16FromHeader(ENCODING_OFFSET, ENCODING_LENGTH) > 0 ? false : true);
+                this.ASCII = (bool) (getuint16FromHeader(ENCODING_OFFSET, ENCODING_LENGTH) > 0 ? false : true);
 
-                this.c1 = getuint16FromHeader(CHECKSUM_1_OFFSET, CHECKSUM_LENGTH);
+                this.c1 = (uint) getuint16FromHeader(CHECKSUM_1_OFFSET, CHECKSUM_LENGTH);
 
-                this.c2 = getuint16FromHeader(CHECKSUM_2_OFFSET, CHECKSUM_LENGTH);
+                this.c2 = (uint) getuint16FromHeader(CHECKSUM_2_OFFSET, CHECKSUM_LENGTH);
+
+
+                Program.form.labelValidHeader.ForeColor = Color.LightGreen;
+                Program.form.labelValidHeader.Text = @"Valid Card Header";
 
                 return;
             }
@@ -77,71 +81,43 @@ namespace GC_MemCard_Reader
             {
                 // No matter what error, abort mission
                 // Notify the user
-                this.warning(e.ToString());
+                // nah
+                // this.warning(e.ToString());
+                Program.form.labelValidHeader.ForeColor = Color.Red;
+                Program.form.labelValidHeader.Text = @"Invalid Card Header";
                 return;
             }
         }
-
-        /*
-         * Both (uint32fromheader and uint16 from header) convert the
-         * bytes of the header to a HEX value and store those in a String         
-         * array - I've tried MANY different ways to avoid that, if you know
-         * one, please tell me :)
-        */
-        
+                
         // returns the integer value within the given range (from offset to offset+length-1)
-        private uint getuint32FromHeader(uint offset, uint length)
+        private UInt32 getuint32FromHeader(uint offset, uint length)
         {
-            uint ret = 0;
-            string[] tmp = new string[length/4];
-            // length: total bytes
-            // int32: 4 bytes
-            int pos = 0; // position + 1 after 4 bytes being added
-
-            for(int i = 0; i < length; i++)
-            {
-                tmp[pos] += Header[i + offset].ToString("X2");
-                if ((i+1) % 4 == 0)
-                    pos++;
-            }
-
-            for(int i = 0; i < pos; i++)
-            {
-                ret += uint.Parse(tmp[i], System.Globalization.NumberStyles.HexNumber);
-            }
-            return ret;
-        }
-
-        // returns the integer value within the given range (from offset to offset+length-1)
-        private uint getuint16FromHeader(uint offset, uint length)
-        {
-            uint ret = 0;
-            string[] tmp = new string[length / 2];
-            // length: total bytes
-            // int16: 2 bytes
-            int pos = 0; // position + 1 after 2 bytes being added
-
+            // Int32 is 4 bytes long
+            byte[] buffer = new byte[length];
+                        
             for (int i = 0; i < length; i++)
             {
-                tmp[pos] += Header[i + offset].ToString("X2");
-                if ((i + 1) % 2 == 0)
-                    pos++;
+                buffer[i] = Header[i + offset];
             }
+            Array.Reverse(buffer);
 
-            for (int i = 0; i < pos; i++)
-            {
-                ret += uint.Parse(tmp[i], System.Globalization.NumberStyles.HexNumber);
-            }
-            return ret;
+            return BitConverter.ToUInt32(buffer, 0x0);
         }
-        /*{
-        uint ret = 0;
-        for(int i = 0; i < length; i++)
+
+        // returns the integer value within the given range (from offset to offset+length-1)
+        private UInt16 getuint16FromHeader(uint offset, uint length)
         {
-            ret += Header[offset + i];
+            // Int16 is 2 bytes long
+            byte[] buffer = new byte[length];
+                        
+            for (int i = 0; i < length; i++)
+            {                
+                buffer[i] = Header[i + offset];
+            }
+            Array.Reverse(buffer);
+
+            return BitConverter.ToUInt16(buffer, 0x0);
         }
-        return ret;
-    }*/
 
         private void warning(string s)
         {
