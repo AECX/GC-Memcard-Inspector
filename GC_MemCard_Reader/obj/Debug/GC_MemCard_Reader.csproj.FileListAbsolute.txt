@@ -1,0 +1,9 @@
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\bin\Debug\GC_MemCard_Reader.exe.config
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\bin\Debug\GC_MemCard_Reader.exe
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\bin\Debug\GC_MemCard_Reader.pdb
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.mainForm.resources
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.Properties.Resources.resources
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.csproj.GenerateResource.Cache
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.exe
+D:\Visual Studio\Projects\GC_MemCard_Reader\GC_MemCard_Reader\obj\Debug\GC_MemCard_Reader.pdb
