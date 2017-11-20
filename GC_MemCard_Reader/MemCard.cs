@@ -119,7 +119,7 @@ namespace GC_MemCard_Reader
             string[] tmp = new string[length / 2];
             // length: total bytes
             // int16: 2 bytes
-            int pos = 0; // position + 1 after 4 bytes being added
+            int pos = 0; // position + 1 after 2 bytes being added
 
             for (int i = 0; i < length; i++)
             {
